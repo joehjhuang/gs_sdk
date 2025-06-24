@@ -104,7 +104,7 @@ class Reconstructor:
                 raise ValueError("Background image is not loaded.")
 
         # Calculate the height map
-        H = poisson_dct_neumaan(G[:, :, 0], G[:, :, 1]).astype(np.float32)
+        H = poisson_dct_neumann(G[:, :, 0], G[:, :, 1]).astype(np.float32)
 
         # Calculate the contact mask
         if self.contact_mode == "standard":
@@ -154,7 +154,7 @@ def image2bgrxys(image):
     return bgrxys
 
 
-def poisson_dct_neumaan(gx, gy):
+def poisson_dct_neumann(gx, gy):
     """
     2D integration of depth from gx, gy using Poisson solver.
 
